@@ -2,7 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import './PizzaList.css';
 import axios from 'axios';
-import { get } from "../../../server/routes/pizza.router";
+// import { get } from "../../../server/routes/pizza.router";
+
+// Importing MaterialUI items
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -14,8 +16,18 @@ import { useTheme } from '@mui/material/styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
+// Importing useSelector to pull information from STORE
+import { useSelector } from "react-redux";
+
+// Importing dispatch to send to STORE
+import { useDispatch } from "react-redux";
+
 function PizzaList() {
-    let [pizzaList, setPizzaList] = useState([]);
+    // sourcing dispatch to use later
+    const dispatch = useDispatch();
+
+    // sourcing pizza list information
+    const pizzaList = useSelector(store => store.pizzaList)
 
     // on load, fetching pizza list from server
     useEffect(() => {
@@ -28,22 +40,33 @@ function PizzaList() {
             method: 'GET',
             url: '/api/pizza'
         })
-        .then( response => {
-            setPizzaList(response.data);
-            console.log(pizzaList);
-        })
-        .catch( error => {
-            console.log('Error in the GET request of PizzaList: ', error);
-        })
+            .then(response => {
+                // dispatch to sent to store on index.js
+                dispatch({
+                    type: 'GET_PIZZA',
+                    payload: response.data
+                });
+            })
+            .catch(error => {
+                console.log('Error in the GET request of PizzaList: ', error);
+            })
     }
-
-    return ( 
+    console.log(pizzaList)
+    return (
         <div className="pizzaList">
             {
-                pizzaList.map(pizza => {
-                    <Card sx={{maxWidth: 345}}>
+                pizzaList.map(pizza => 
+                    <div className="single-card">
+                    
+                    <Card sx={{
+                        maxWidth: 345,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }} elevation={4}>
                         <CardActionArea>
-                            <CardMedia 
+                            <CardMedia
                                 component="img"
                                 height="140"
                                 image={pizza.image_path}
@@ -52,10 +75,18 @@ function PizzaList() {
                                 <Typography gutterBottom variant="h5" component="div">
                                     {pizza.name}
                                 </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {pizza.description}
+                                </Typography>
+                            </CardContent>
+                            <CardContent>
+                                <Button size="medium">Add</Button>
                             </CardContent>
                         </CardActionArea>
                     </Card>
-                })
+                    </div>
+
+                )
             }
 
         </div>
