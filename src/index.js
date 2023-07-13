@@ -21,9 +21,9 @@ const pizzaList = (state = [], action) => {
 const custInfo = (state = [], action) => {
     // Save customer information to the custinfo array
     if (action.type === "COLLECT_CUST_INFO") {
-      console.log('Customer information added: ', action.payload)
+    console.log('Customer information added: ', action.payload)
     //   return [...state, action.payload];
-      return action.payload;
+    return action.payload;
     }
     return state;
 };
@@ -41,6 +41,7 @@ const store = createStore(
     combineReducers({
         pizzaList,
         custInfo,
+        cartList
     })
 )
 

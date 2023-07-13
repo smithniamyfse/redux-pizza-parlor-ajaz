@@ -2,7 +2,7 @@
 GOAL OF CHECKOUT:
 [x] write return() with html for page
 [x] test with front-end route
-[ ] Populate the page with user data => useSelector!
+[x] Populate the page with user data => useSelector!
 [ ] When they click checkout, the user information, order total and array of pizzas should be sent to the server.
     [x] create click handler for checkout
     [x] show a confirmation dialog (confirm html element)
@@ -27,7 +27,7 @@ function Checkout() {
     const history = useHistory();
     // useSelector hook goes here (grabbing cart data from Redux store)
     const cartList = useSelector(store => store.cartList)
-    const userInfo = useSelector(store => store.custinfo)
+    const userInfo = useSelector(store => store.custInfo)
 
     function handleCheckoutClick() {
         console.log('Checkout button clicked! 💰🤑🍕');
@@ -52,12 +52,12 @@ function Checkout() {
             // HTML to display 
             <>
                 <h2>Step 3: Checkout</h2>
-                <pre>{userInfo}</pre>
+                <pre>{JSON.stringify(userInfo)}</pre>
                 {/* { customer_name, street_address, city, zip, type } */}
-                <div>Name{userInfo.customer_name}</div>
-                <div>Address{userInfo.street_address}</div>
-                <div>city, state{userInfo.city}</div>
-                <div>For{userInfo.type}</div>
+                <div>{userInfo.customer_name}</div>
+                <div>{userInfo.street_address}</div>
+                <div>{userInfo.city}</div>
+                <div>{userInfo.type}</div>
                 <table>
                     <thead>
                         <tr>
@@ -66,10 +66,6 @@ function Checkout() {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* <tr>
-                            <td>Pizza</td>
-                            <td>Pizza Cost</td>
-                        </tr> */}
                         {
                         cartList.map((product) => {
                             return(
