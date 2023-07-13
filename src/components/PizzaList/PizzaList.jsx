@@ -4,6 +4,8 @@ import './PizzaList.css';
 import axios from 'axios';
 // import { get } from "../../../server/routes/pizza.router";
 
+import { useHistory } from "react-router-dom";
+
 // Importing MaterialUI items
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -26,6 +28,7 @@ import { useDispatch } from "react-redux";
 function PizzaList() {
     // sourcing dispatch to use later
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // sourcing pizza list information
     const pizzaList = useSelector(store => store.pizzaList)
@@ -56,7 +59,7 @@ function PizzaList() {
             })
     }
 
-    const handleAdd = (pizza) => {
+    const handleClick = () => {
         dispatch({
             type: 'ADD_CART',
             payload: {
@@ -66,24 +69,28 @@ function PizzaList() {
         })
     }
 
+    const handleNext = () => {
+        history.push('./checkout')
+    }
+
     console.log('Current cartlist is: ', cartList)
 
 // Card Flipping setup
 const [ showCard, setShowCard] = useState(false);
 
-// Set function to flip variable
-const handleCard = () => {
-    setShowCard(!showCard)
-    console.log('Add/Remove clicked')
-}
+
+
+ const handleRemove = (pizza) => {
+    console.log('Removing pizza: ', pizza)
+ }
 
 // set up if/else statement to change displayed button
-// let content 
-// if(!showCard) {
-//     content = <Button size="small" onClick={() => handleAdd(pizza)}>Add</Button>
-// } else {
-//     content = <Button size="small" onClick={() => handleRemove(pizza)}>Remove</Button>
-// }
+let content 
+if(!showCard) {
+    content = (<Button size="small" onClick={() => handleAdd(pizza)}>Add</Button>)
+} else {
+    content = (<Button size="small" onClick={() => handleRemove(pizza)}>Remove</Button>)
+}
 
 
     return (
@@ -122,7 +129,7 @@ const handleCard = () => {
                             </Typography>
                             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end'}}> 
                                 <CardActions>
-                                <Button size="small" onClick={() => handleAdd(pizza)}>Add</Button>
+                                {content}
                                 </CardActions>
                             </Box>
 
@@ -136,7 +143,7 @@ const handleCard = () => {
 
         </div>
     <div className="checkout-button-div">
-        <Button></Button>
+        <Button onClick={handleNext}>Next</Button>
         </div>
         </>
     )
