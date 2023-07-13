@@ -2,14 +2,14 @@
 GOAL OF CHECKOUT:
 [x] write return() with html for page
 [x] test with front-end route
-[ ] Populate the page with user data => useSelector!
+[x] Populate the page with user data => useSelector!
 [ ] When they click checkout, the user information, order total and array of pizzas should be sent to the server.
     [x] create click handler for checkout
     [x] show a confirmation dialog (confirm html element)
     [ ] POST data to the server
 [ ] After the checkout is complete, navigate the user back to the select pizza page AND clear out the reducers as appropriate.
     [x] .then() should link user back to <PizzaList />
-    [ ] clear reducers for cart and Checkout
+    [ ] send dispatch actions to clear reducers for cart and Checkout
 [ ] Each order should begin with "clean" order data (cart, address, etc).
     [ ] clear all user inputs everywhere?
 */
@@ -26,8 +26,8 @@ function Checkout() {
     const dispatch = useDispatch();
     const history = useHistory();
     // useSelector hook goes here (grabbing cart data from Redux store)
-    const cartList = useSelector(store => store.cart)
-    const userInfo = useSelector(store => store.custinfo)
+    const cartList = useSelector(store => store.cartList)
+    const userInfo = useSelector(store => store.custInfo)
 
     function handleCheckoutClick() {
         console.log('Checkout button clicked! 💰🤑🍕');
@@ -46,19 +46,18 @@ function Checkout() {
                 console.log('error POSTing product: ', error);
                 })
             }
-    }
+        }
     
     return(
             // HTML to display 
             <>
-                <h1>Prime Pizza</h1>
                 <h2>Step 3: Checkout</h2>
-                <pre>{userInfo}</pre>
+                <pre>{JSON.stringify(userInfo)}</pre>
                 {/* { customer_name, street_address, city, zip, type } */}
-                <div>Name{userInfo.customer_name}</div>
-                <div>Address{userInfo.street_address}</div>
-                <div>city, state{userInfo.city}</div>
-                <div>For{userInfo.type}</div>
+                <div>{userInfo.customer_name}</div>
+                <div>{userInfo.street_address}</div>
+                <div>{userInfo.city}</div>
+                <div>{userInfo.type}</div>
                 <table>
                     <thead>
                         <tr>
@@ -67,20 +66,19 @@ function Checkout() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Pizza</td>
-                            <td>Pizza Cost</td>
-                        </tr>
-                        {/* MAP DATA HERE
                         {
                         cartList.map((product) => {
-                            return
+                            return(
                             <>
+                            <tr>
                                 <td> {product.name}</td>
                                 <td> {product.price}</td>
+                            </tr>
                             </>
+                            )
                         })
-                        } */}</tbody>
+                        }
+                        </tbody>
                 </table>
                 <button onClick={handleCheckoutClick}>CHECKOUT</button>
             </>
