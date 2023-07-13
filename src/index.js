@@ -18,11 +18,12 @@ const pizzaList = (state = [], action) => {
 
 // Customer Information REDUCER
 // When Next is clicked on, store the customer information to the redux store's `custinfo`.
-const custinfo = (state = [], action) => {
+const custInfo = (state = [], action) => {
     // Save customer information to the custinfo array
     if (action.type === "COLLECT_CUST_INFO") {
       console.log('Customer information added: ', action.payload)
-      return [...state, action.payload];
+    //   return [...state, action.payload];
+      return action.payload;
     }
     return state;
   };
@@ -33,7 +34,7 @@ const custinfo = (state = [], action) => {
 const store = createStore(
     combineReducers({
         pizzaList,
-        custinfo,
+        custInfo,
     })
 )
 
