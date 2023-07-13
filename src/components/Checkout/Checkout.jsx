@@ -32,8 +32,6 @@ function Checkout() {
         console.log('Checkout button clicked! 💰🤑🍕');
         // POST function goes here
         if (confirm('Would you like that pizza? 🍕👀')) {
-
-
             axios.post('/api/order', {
                 price: price,
                 name: name
@@ -43,7 +41,6 @@ function Checkout() {
                 dispatch({type: 'CHECKOUT'})
                 // navigate the user back to the select pizza page
                 history.push('./');
-                // haha what a weinie
                 }).catch(error => {
                 console.log('error POSTing product: ', error);
                 })
