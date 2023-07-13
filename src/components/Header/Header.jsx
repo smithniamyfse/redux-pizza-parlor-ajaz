@@ -13,7 +13,7 @@ const Header = () => {
       total += Number(item.price)
       console.log('Price:',item.price);
     })
-    return total;
+    return total.toFixed(2);
   }
   return (
     <header className="App-header">
