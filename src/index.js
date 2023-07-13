@@ -11,9 +11,8 @@ import logger from 'redux-logger';
 // adding REDUCER to STORE information
 const pizzaList = (state = [], action) => {
     if (action.type === 'GET_PIZZA') {
-        return action.payload;
+        return  action.payload;
     }
-
     return state;
 }
 
@@ -29,7 +28,7 @@ const custInfo = (state = [], action) => {
     return state;
 };
 
-const cartList = (state = [], action) => {
+const cartList = ( state = [], action) => {
     if(action.type === 'ADD_CART') {
         return [...state, action.payload]
     } else if (action.type === 'REMOVE_CART') {0
@@ -37,7 +36,6 @@ const cartList = (state = [], action) => {
     }
     return state;
 }
-
 
 // STORE to keep information
 const store = createStore(
