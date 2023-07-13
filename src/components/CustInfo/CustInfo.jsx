@@ -62,7 +62,9 @@ function CustInfo() {
   return (
     <>
       <h2>Step 2: Customer Information</h2>
+      
       <form onSubmit={collectCustInfo} className="add-cust-info-form">
+        <div className="form-input-container">
         <input
           required
           placeholder="Name"
@@ -87,6 +89,8 @@ function CustInfo() {
           value={zip}
           onChange={(event) => setZip(event.target.value)}
         />
+        </div>
+        <div className="order-type-container">
         <div>
           <input
             type="radio"
@@ -108,6 +112,7 @@ function CustInfo() {
             onChange={(event) => setType(event.target.value)}
           />
           <label htmlFor="typeChoice2">Delivery</label>
+        </div>
         </div>
           <div>
             <button type="submit">Next</button>

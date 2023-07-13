@@ -41,6 +41,7 @@ const store = createStore(
     combineReducers({
         pizzaList,
         custInfo,
+        cartList
     })
 )
 
