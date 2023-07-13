@@ -11,6 +11,7 @@ import Checkout from '../Checkout/Checkout'
 // importing Router to use
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
+
 function App() {
 
     return (
@@ -28,6 +29,9 @@ function App() {
                 <Route path="/checkout">
                   <Checkout />
                 </Route>
+        <Route path="/custinfo">
+          <CustInfo />
+        </Route>
             </div>
         </Router>
     );
