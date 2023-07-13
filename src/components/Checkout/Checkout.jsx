@@ -26,7 +26,7 @@ function Checkout() {
     const dispatch = useDispatch();
     const history = useHistory();
     // useSelector hook goes here (grabbing cart data from Redux store)
-    const cartList = useSelector(store => store.cart)
+    const cartList = useSelector(store => store.cartList)
     const userInfo = useSelector(store => store.custinfo)
 
     function handleCheckoutClick() {
@@ -71,16 +71,19 @@ function Checkout() {
                             <td>Pizza</td>
                             <td>Pizza Cost</td>
                         </tr>
-                        {/* MAP DATA HERE
-                        {
+                        MAP DATA HERE
+                        {/* {
                         cartList.map((product) => {
                             return
                             <>
+                            <tr>
                                 <td> {product.name}</td>
                                 <td> {product.price}</td>
+                            </tr>
                             </>
                         })
-                        } */}</tbody>
+                        } */}
+                        </tbody>
                 </table>
                 <button onClick={handleCheckoutClick}>CHECKOUT</button>
             </>
