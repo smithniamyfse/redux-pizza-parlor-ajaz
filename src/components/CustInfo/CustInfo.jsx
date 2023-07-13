@@ -2,14 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import {HashRouter as Router, Route, Link, useHistory} from 'react-router-dom';
 import "./CustInfo.css";
 
 // http://localhost:3000/#/custinfo
+
 
 function CustInfo() {
   const dispatch = useDispatch();
 
   const custInfo = useSelector((store) => store.custInfo);
+  const history = useHistory();
+
+
 
   const [customer_name, setCustomerName] = useState("");
   const [street_address, setStreetAddress] = useState("");
@@ -25,6 +30,10 @@ function CustInfo() {
     setType('');
   }
 
+//   const goToCheckout = () => {
+//     history.push("/checkout")
+//   }
+
   const collectCustInfo = (event) => {
     event.preventDefault();
 
@@ -37,12 +46,17 @@ function CustInfo() {
       type
     );
 
+
     dispatch({
       type: "COLLECT_CUST_INFO",
       payload: { customer_name, street_address, city, zip, type },
     });
 
     clearCustInfo();
+
+    history.push("/checkout")
+
+   
   }; // end collectCustInfo function
 
   return (
