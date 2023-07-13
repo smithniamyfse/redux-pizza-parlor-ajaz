@@ -32,9 +32,9 @@ function Checkout() {
         console.log('Checkout button clicked! 💰🤑🍕');
         // POST function goes here
         if (confirm('Would you like that pizza? 🍕👀')) {
-            alert('You want that pizza 🤤'){
 
-            axios.post('/pizza', {
+
+            axios.post('/api/order', {
                 price: price,
                 name: name
                 }).then(response => {
@@ -46,10 +46,9 @@ function Checkout() {
                 // haha what a weinie
                 }).catch(error => {
                 console.log('error POSTing product: ', error);
-                })} else{
-            alert('You cannot handle the pizza 😤')
-        }
-    }}
+                })
+            }
+    }
     
     return(
             // HTML to display 
@@ -81,7 +80,7 @@ function Checkout() {
                                 <td> {product.price}</td>
                             </>
                         })
-                        } */} </tbody>
+                        } */}</tbody>
                 </table>
                 <button onClick={handleCheckoutClick}>CHECKOUT</button>
             </>
