@@ -10,7 +10,7 @@ import { createStore, combineReducers } from 'redux';
 // adding REDUCER to STORE information
 const pizzaList = (state = [], action) => {
     if (action.type === 'GET_PIZZA') {
-        return [...state, action.payload];
+        return action.payload;
     }
 
     return state;
