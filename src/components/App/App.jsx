@@ -15,9 +15,6 @@ function App() {
     <Router>
       <div className='App'>
       <Header/>
-
-        <img src='images/pizza_photo.png' />
-        <p>Pizza is great.</p>
         <Route path="/pizza">
           <PizzaList />
         </Route>

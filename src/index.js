@@ -10,18 +10,21 @@ import { createStore, combineReducers } from 'redux';
 // adding REDUCER to STORE information
 const pizzaList = (state = [], action) => {
     if (action.type === 'GET_PIZZA') {
-        return [...state, action.payload];
-    }else if(action.type === 'GET_TOTAL'){
-        return {...state, total: state.price};
+        return  action.payload;
     }
-
     return state;
 }
-
+const cart = (state = [],action) => {
+    if(action.type === 'GET_TOTAL'){
+        return [...state, action.payload]
+    }
+    return state;
+}
 // STORE to keep information
 const store = createStore(
     combineReducers({
         pizzaList,
+        cart
     })
 )
 

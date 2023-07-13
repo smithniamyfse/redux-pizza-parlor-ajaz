@@ -28,7 +28,7 @@ function PizzaList() {
 
     // sourcing pizza list information
     const pizzaList = useSelector(store => store.pizzaList)
-
+    // 
     // on load, fetching pizza list from server
     useEffect(() => {
         console.log('in useEffect');
@@ -51,36 +51,45 @@ function PizzaList() {
                 console.log('Error in the GET request of PizzaList: ', error);
             })
     }
+ 
+  
     console.log(pizzaList)
     return (
         <div className="pizzaList">
             {
                 pizzaList.map(pizza => 
-                    <div className="single-card">
+                    <div className="single-card" key={pizza.id}>
                     
                     <Card sx={{
-                        maxWidth: 345,
+                        width: 345,
+                        height: 400,
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'center',
                         alignItems: 'center'
                     }} elevation={4}>
                         <CardActionArea>
+                 
                             <CardMedia
                                 component="img"
                                 height="140"
                                 image={pizza.image_path}
                             />
+              
+   
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     {pizza.name}
                                 </Typography>
+                    
                                 <Typography variant="body2" color="text.secondary">
                                     {pizza.description}
                                 </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {pizza.price}
+                                </Typography>
                             </CardContent>
-                            <CardContent>
-                                <Button size="medium">Add</Button>
+                            <CardContent sx={{alignItems: 'bottom'}}>
+                                <Button size="small" onClick={addToCart}>Add</Button>
                             </CardContent>
                         </CardActionArea>
                     </Card>
