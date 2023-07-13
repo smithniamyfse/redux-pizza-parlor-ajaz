@@ -31,8 +31,8 @@ const custInfo = (state = [], action) => {
 const cartList = ( state = [], action) => {
     if(action.type === 'ADD_CART') {
         return [...state, action.payload]
-    } else if (action.type === 'REMOVE_CART') {0
-        state = state.filter(pizza => {return Number(pizza.pizzaItem.id) !== Number(action.payload)})
+    } else if (action.type === 'REMOVE_CART') {
+        return state = state.filter(pizza => {return pizza.id !== action.payload})
     }
     return state;
 }

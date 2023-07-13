@@ -1,6 +1,8 @@
 import React from "react";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useSelector } from "react-redux";
+
+
 const Header = () => {
   const cart = useSelector(state => state.cartList);
   // Get total, add up all the prices from cartList
