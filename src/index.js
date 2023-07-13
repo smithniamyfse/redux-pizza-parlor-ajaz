@@ -14,17 +14,22 @@ const pizzaList = (state = [], action) => {
     }
     return state;
 }
-const cart = (state = [],action) => {
-    if(action.type === 'GET_TOTAL'){
+
+
+const cartList = ( state = [], action) => {
+    if(action.type === 'ADD_CART') {
         return [...state, action.payload]
+    }else if(action.type === 'TOTAL'){
+        return [...state, action.payload];
     }
     return state;
 }
+
 // STORE to keep information
 const store = createStore(
     combineReducers({
         pizzaList,
-        cart
+        cartList,
     })
 )
 
