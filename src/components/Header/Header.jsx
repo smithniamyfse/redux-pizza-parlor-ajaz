@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const cart = useSelector(state => state.cartList);
   // Get total, add up all the prices from cartList
+
   const getTotal = () => {
     // Starting total at 0
     let total = 0;
