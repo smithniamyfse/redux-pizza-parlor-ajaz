@@ -70,7 +70,7 @@ function PizzaList() {
     }
 
     const handleNext = () => {
-        history.push('./checkout')
+        history.push('/checkout')
     }
 
     console.log('Current cartlist is: ', cartList)
