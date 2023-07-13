@@ -3,13 +3,27 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #04417a;
   height: 70px;
   padding: 20px;
   color: white;
   margin-bottom: 20px;
-}
+  display: flex;
+  justify-content: flex-start;
 
+}
+.shopping-cart{
+  margin: 1.5rem 0 0 60rem;
+  font-weight: 400;
+  text-align: center;
+}
+.total{
+  margin: 0 0.5rem;
+  font-size: 2em;
+}
+.icon{
+  width: 20rem;
+}
 .App-title {
   font-size: 2em;
 }
