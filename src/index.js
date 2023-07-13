@@ -26,7 +26,7 @@ const custInfo = (state = [], action) => {
       return action.payload;
     }
     return state;
-  };
+};
 
 
 
