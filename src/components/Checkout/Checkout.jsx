@@ -3,7 +3,7 @@ GOAL OF CHECKOUT:
 [x] write return() with html for page
 [ ] When they click checkout, the user information, order total and array of pizzas should be sent to the server.
     [x] create click handler for checkout
-        [ ] show a confirmation dialog (confirm html element)
+    [x] show a confirmation dialog (confirm html element)
     [ ] POST data to the server
 [ ] After the checkout is complete, navigate the user back to the select pizza page AND clear out the reducers as appropriate.
     [ ] .then() should link user back to <PizzaList />
@@ -14,17 +14,26 @@ GOAL OF CHECKOUT:
 
 
 // imports
-
+import React from 'react';
+import axios from "axios";
+import {useSelector, useDispatch} from 'react-redux';
 
 // function for our Checkout component
 function Checkout() {
-
+    const dispatch = useDispatch();
+    // useSelector hook goes here (grabbing cart data from Redux store)
     function handleCheckoutClick() {
         console.log('Checkout button clicked! 💰🤑🍕');
         if(confirm('Would you like that pizza? 🍕👀')){
-            text = 'You want that pizza 🤤'
+            text = 'You want that pizza 🤤';
+            // POST function goes here
+            axios.post({
+
+            })
+            // after post, we will clear the cart and other user inputs
+                // use dispatch to communicate with Redux store!
         }else{
-            text = 'You cannot handle the pizza 😤'
+            text = 'You cannot handle the pizza 😤';
         }
     }
     
@@ -55,3 +64,5 @@ function Checkout() {
         </>
     )
 }
+
+export default Checkout;
