@@ -9,7 +9,7 @@ GOAL OF CHECKOUT:
     [ ] POST data to the server
 [ ] After the checkout is complete, navigate the user back to the select pizza page AND clear out the reducers as appropriate.
     [x] .then() should link user back to <PizzaList />
-    [ ] clear reducers for cart and Checkout
+    [ ] send dispatch actions to clear reducers for cart and Checkout
 [ ] Each order should begin with "clean" order data (cart, address, etc).
     [ ] clear all user inputs everywhere?
 */
@@ -46,12 +46,11 @@ function Checkout() {
                 console.log('error POSTing product: ', error);
                 })
             }
-    }
+        }
     
     return(
             // HTML to display 
             <>
-                <h1>Prime Pizza</h1>
                 <h2>Step 3: Checkout</h2>
                 <pre>{userInfo}</pre>
                 {/* { customer_name, street_address, city, zip, type } */}
@@ -67,22 +66,22 @@ function Checkout() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        {/* <tr>
                             <td>Pizza</td>
                             <td>Pizza Cost</td>
-                        </tr>
-                        MAP DATA HERE
-                        {/* {
+                        </tr> */}
+                        {
                         cartList.map((product) => {
-                            return
+                            return(
                             <>
                             <tr>
                                 <td> {product.name}</td>
                                 <td> {product.price}</td>
                             </tr>
                             </>
+                            )
                         })
-                        } */}
+                        }
                         </tbody>
                 </table>
                 <button onClick={handleCheckoutClick}>CHECKOUT</button>
