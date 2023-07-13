@@ -33,11 +33,8 @@ function PizzaList() {
   // testing cartlist
   const cartList = useSelector(store => store.cartList);
 
-  // on load, fetching pizza list from server
-  useEffect(() => {
-    console.log("in useEffect");
-    getPizza();
-  }, []);
+  // Card Flipping setup
+  const [showCard, setShowCard] = useState(false);
 
   const getPizza = () => {
     axios({
@@ -56,18 +53,38 @@ function PizzaList() {
       });
   };
 
-  const handleAdd = pizza => {
-      let sum = 0;
-    dispatch({
-      type: "ADD_CART",
-      payload: {
-        name: pizza.name,
-        price: pizza.price,
-      },
-    });
+  console.log("Current cartlist is: ", cartList);
 
+  // Set function to flip variable
+  const handleCard = () => {
+    setShowCard(!showCard);
+    console.log("Add/Remove clicked");
   };
 
+  // set up if/else statement to change displayed button
+  // let content
+  // if(!showCard) {
+  //     content = <Button size="small" onClick={() => handleAdd(pizza)}>Add</Button>
+  // } else {
+  //     content = <Button size="small" onClick={() => handleRemove(pizza)}>Remove</Button>
+  // }
+
+  
+  const handleAdd = pizza => {
+      dispatch({
+          type: "ADD_CART",
+          payload: {
+              name: pizza.name,
+              price: pizza.price,
+            },
+        });
+    };
+    
+    // on load, fetching pizza list from server
+    useEffect(() => {
+      console.log("in useEffect");
+      getPizza();
+    }, []);
   console.log("Current cartlist is: ", cartList);
 
   return (
@@ -117,7 +134,9 @@ function PizzaList() {
               >
                 ${pizza.price}
               </Typography>
-              <Button size="small" onClick={handleAdd}>Add</Button>
+              <Button size="small" >
+                Add
+              </Button>
             </CardActionArea>
           </Card>
         </div>
@@ -125,5 +144,4 @@ function PizzaList() {
     </div>
   );
 }
-
 export default PizzaList;

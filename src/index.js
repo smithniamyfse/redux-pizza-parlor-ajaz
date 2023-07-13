@@ -34,13 +34,12 @@ const custinfo = (state = [], action) => {
   };
 
 
-
 // STORE to keep information
 const store = createStore(
     combineReducers({
         pizzaList,
         custinfo,
-        cartList
+        cartList,
     })
 )
 
