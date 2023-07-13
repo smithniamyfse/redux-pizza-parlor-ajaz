@@ -53,7 +53,7 @@ function Checkout() {
             <>
                 <h1>Prime Pizza</h1>
                 <h2>Step 3: Checkout</h2>
-                <pre>{userInfo}</pre>
+                <pre>JSON.stringify{userInfo}</pre>
                 {/* { customer_name, street_address, city, zip, type } */}
                 <div>Name{userInfo.customer_name}</div>
                 <div>Address{userInfo.street_address}</div>

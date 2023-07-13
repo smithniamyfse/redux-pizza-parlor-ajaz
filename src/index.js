@@ -43,7 +43,7 @@ const cartList = (state = [], action) => {
 const store = createStore(
     combineReducers({
         pizzaList,
-        custinfo,
+        custInfo,
         cartList,
     }),
     applyMiddleware(logger)
