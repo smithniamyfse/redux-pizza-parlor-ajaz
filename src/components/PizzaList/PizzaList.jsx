@@ -72,6 +72,7 @@ function PizzaList() {
 
 
     return (
+        <>
         <div className="pizzaList">
             {
                 pizzaList.map(pizza =>
@@ -119,6 +120,10 @@ function PizzaList() {
             }
 
         </div>
+    <div className="checkout-button-div">
+        <Button></Button>
+        </div>
+        </>
     )
 
 

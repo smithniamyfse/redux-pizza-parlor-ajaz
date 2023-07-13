@@ -31,6 +31,7 @@ const cartList = (state = [], action) => {
     if(action.type === 'ADD_CART') {
         return [...state, action.payload]
     }
+    return state;
 }
 
 
