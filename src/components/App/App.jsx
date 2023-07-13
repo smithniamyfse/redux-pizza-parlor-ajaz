@@ -8,6 +8,9 @@ import PizzaList from '../PizzaList/PizzaList';
 // importing Checkout
 import Checkout from '../Checkout/Checkout'
 
+// importing CustInfo
+import CustInfo from '../CustInfo/CustInfo'
+
 // importing Router to use
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
@@ -29,9 +32,9 @@ function App() {
                 <Route path="/checkout">
                   <Checkout />
                 </Route>
-        <Route path="/custinfo">
-          <CustInfo />
-        </Route>
+                <Route path="/custinfo">
+                  <CustInfo />
+                </Route>
             </div>
         </Router>
     );

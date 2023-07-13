@@ -27,6 +27,7 @@ function Checkout() {
     const history = useHistory();
     // useSelector hook goes here (grabbing cart data from Redux store)
     const cartList = useSelector(store => store.cart)
+    const userInfo = useSelector(store => store.custinfo)
 
     function handleCheckoutClick() {
         console.log('Checkout button clicked! 💰🤑🍕');
@@ -52,10 +53,12 @@ function Checkout() {
             <>
                 <h1>Prime Pizza</h1>
                 <h2>Step 3: Checkout</h2>
-                <div>User Name</div>
-                <div>Address</div>
-                <div>city, state</div>
-                <div>For Delivery</div>
+                <pre>{userInfo}</pre>
+                {/* { customer_name, street_address, city, zip, type } */}
+                <div>Name{userInfo.customer_name}</div>
+                <div>Address{userInfo.street_address}</div>
+                <div>city, state{userInfo.city}</div>
+                <div>For{userInfo.type}</div>
                 <table>
                     <thead>
                         <tr>
