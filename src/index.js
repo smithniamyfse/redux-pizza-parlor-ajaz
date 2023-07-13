@@ -21,11 +21,11 @@ const pizzaList = (state = [], action) => {
 const custinfo = (state = [], action) => {
     // Save customer information to the custinfo array
     if (action.type === "COLLECT_CUST_INFO") {
-      console.log('Customer information added: ', action.payload)
-      return [...state, action.payload];
+    console.log('Customer information added: ', action.payload)
+    return [...state, action.payload];
     }
     return state;
-  };
+};
 
 
 
