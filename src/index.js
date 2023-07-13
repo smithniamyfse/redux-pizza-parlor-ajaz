@@ -19,9 +19,9 @@ const pizzaList = (state = [], action) => {
 const cartList = ( state = [], action) => {
     if(action.type === 'ADD_CART') {
         return [...state, action.payload]
-    }else if(action.type === 'TOTAL'){
-        return [...state, action.payload];
     }
+    return state;
+}
 // Customer Information REDUCER
 // When Next is clicked on, store the customer information to the redux store's `custinfo`.
 const custinfo = (state = [], action) => {
