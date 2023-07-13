@@ -2,12 +2,13 @@
 GOAL OF CHECKOUT:
 [x] write return() with html for page
 [x] test with front-end route
+[ ] Populate the page with user data => useSelector!
 [ ] When they click checkout, the user information, order total and array of pizzas should be sent to the server.
     [x] create click handler for checkout
     [x] show a confirmation dialog (confirm html element)
     [ ] POST data to the server
 [ ] After the checkout is complete, navigate the user back to the select pizza page AND clear out the reducers as appropriate.
-    [ ] .then() should link user back to <PizzaList />
+    [x] .then() should link user back to <PizzaList />
     [ ] clear reducers for cart and Checkout
 [ ] Each order should begin with "clean" order data (cart, address, etc).
     [ ] clear all user inputs everywhere?
@@ -70,6 +71,16 @@ function Checkout() {
                     <tr>
                         <td>Pizza</td>
                         <td>Pizza Cost</td>
+                        {/* MAP DATA HERE
+                        pizzaList.map((pizza) => {
+                        return (
+                            <tr>
+                                <td> key={product.name}><td>
+                                <td> key={product.price}><td>
+                            </tr>
+                        )
+                        })
+                        */}
                     </tr>
                 </tbody>
             </table>
