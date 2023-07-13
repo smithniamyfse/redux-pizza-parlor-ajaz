@@ -66,12 +66,28 @@ function PizzaList() {
         })
     }
 
-console.log('Current cartlist is: ', cartList)
+    console.log('Current cartlist is: ', cartList)
 
+// Card Flipping setup
+const [ showCard, setShowCard] = useState(false);
 
+// Set function to flip variable
+const handleCard = () => {
+    setShowCard(!showCard)
+    console.log('Add/Remove clicked')
+}
+
+// set up if/else statement to change displayed button
+// let content 
+// if(!showCard) {
+//     content = <Button size="small" onClick={() => handleAdd(pizza)}>Add</Button>
+// } else {
+//     content = <Button size="small" onClick={() => handleRemove(pizza)}>Remove</Button>
+// }
 
 
     return (
+        <>
         <div className="pizzaList">
             {
                 pizzaList.map(pizza =>
@@ -80,33 +96,38 @@ console.log('Current cartlist is: ', cartList)
                             width: 345,
                             height: 400,
                             display: 'flex',
+                            flexDirection: 'column'
                         }} elevation={4}>
-                            <CardActionArea onClick={()=> handleAdd(pizza)} >
-                                <CardMedia
-                                    component="img"
-                                    height="140"
-                                    image={pizza.image_path}
-                                />
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
-                                        {pizza.name}
-                                    </Typography>
 
-                                    <Typography variant="body2" color="text.secondary">
-                                        {pizza.description}
-                                    </Typography>
-                                    <Box sx={{ display: 'flex', alignSelf: 'flex-end', justifyContent: 'flex-end' }}>
-
-                                    </Box>
-                                </CardContent>
-
-                                <Typography variant="body1" color="text.secondary" sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
-                                    ${pizza.price}
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image={pizza.image_path}
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    {pizza.name}
                                 </Typography>
-                                {/* <Button size="small">Add</Button> */}
+
+                                <Typography variant="body2" color="text.secondary">
+                                    {pizza.description}
+                                </Typography>
+                                <Box sx={{ display: 'flex', alignSelf: 'flex-end', justifyContent: 'flex-end' }}>
+
+                                </Box>
+                            </CardContent>
+
+                            <Typography variant="body1" color="text.secondary" sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+                                ${pizza.price}
+                            </Typography>
+                            <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end'}}> 
+                                <CardActions>
+                                <Button size="small" onClick={() => handleAdd(pizza)}>Add</Button>
+                                </CardActions>
+                            </Box>
 
 
-                            </CardActionArea>
+
                         </Card>
                     </div>
 
@@ -114,6 +135,10 @@ console.log('Current cartlist is: ', cartList)
             }
 
         </div>
+    <div className="checkout-button-div">
+        <Button></Button>
+        </div>
+        </>
     )
 
 
